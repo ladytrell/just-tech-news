@@ -5,6 +5,7 @@ const { Post, User, Comment, Vote } = require('../../models');
 // get all users
 router.get('/', (req, res) => {
   console.log('======================');
+    // Access our User model and run .findAll() method)
   Post.findAll({
     attributes: [
       'id',
@@ -36,6 +37,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET /api/users/1
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -76,6 +78,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// POST /api/users
 router.post('/', (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Post.create({
@@ -90,6 +93,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// Post login 
 router.put('/upvote', (req, res) => {
   // custom static method created in models/Post.js
   Post.upvote(req.body, { Vote, Comment, User })

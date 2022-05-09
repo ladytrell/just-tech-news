@@ -2,6 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // create our Post model
 class Post extends Model {
+    // Execute as if it were a built in method for Sequelize
   static upvote(body, models) {
     return models.Vote.create({
       user_id: body.user_id,
